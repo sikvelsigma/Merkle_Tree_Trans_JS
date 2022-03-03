@@ -1,0 +1,24 @@
+{
+  "name": "merkle_tree_trans_js",
+  "version": "1.0.0",
+  "description": "Currently work-in-progress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sikvelsigma/Merkle_Tree_Trans_JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sikvelsigma/Merkle_Tree_Trans_JS/issues"
+  },
+  "homepage": "https://github.com/sikvelsigma/Merkle_Tree_Trans_JS#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "hardhat": "^2.9.0"
+  }
+}

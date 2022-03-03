@@ -9,7 +9,3 @@ Using:
 Same project for [Merkle tree](https://github.com/sikvelsigma/Merkle_Tree_Trans) but with hardhad
 
 ## Deploy
-
-
-
-

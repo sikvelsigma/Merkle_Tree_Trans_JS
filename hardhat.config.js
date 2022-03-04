@@ -1,7 +1,8 @@
-require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-ethers");
-require("@nomiclabs/hardhat-web3");
-require("dotenv").config();
+require("@nomiclabs/hardhat-waffle")
+require("@nomiclabs/hardhat-ethers")
+require("@nomiclabs/hardhat-web3")
+require("@nomiclabs/hardhat-etherscan")
+require("dotenv").config()
 
 
 // You need to export an object to set up your config
@@ -29,6 +30,11 @@ module.exports = {
     rinkeby: {
       url: `https://rinkeby.infura.io/v3/${WEB3_INFURA_PROJECT_ID}`,
       accounts: [PRIVATE_KEY]
+    },
+    local: {
+      chainId: 1337,
+      url: "http://127.0.0.1:7545",
+      accounts: ["d91f3c4d4d505dff065684dab2c70e49f7ce28059ffcf05b1015f99b74c9cffc"],
     }
   },
   gasReporter: {
@@ -41,4 +47,4 @@ module.exports = {
   mocha: {
     timeout: 1000000
   }
-};
+}

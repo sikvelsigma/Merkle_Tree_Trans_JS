@@ -13,5 +13,6 @@ To deploy contracts on Rinkeby use `npx hardhat run scripts/deploy.js --network 
 
 To test claims from existing contract one must specify distributor address in `DISTRIBUTOR_ADDRESS` variable and use `npx hardhat test --network rinkeby`
 
+One also need to create a `.env` file from `.env.example` with appropriate keys.
 ## Issues
 There're the same issues with Merkle root not matching the one specified in the task. Other than that the program works identical to the python version.

@@ -93,12 +93,12 @@ async function main() {
 
     // test claim
 
-    let index, account, amount, targetNode, proof, claim, value
-    value = data[0];
-    [index, account, amount] = value
-    targetNode = tree.initialNodes[value]
-    proof = tree.getProof(targetNode)
-    claim = await claimFrom(distributor, index, account, ethers.BigNumber.from(`${amount}`), proof)
+    // let index, account, amount, targetNode, proof, claim, value
+    // value = data[0];
+    // [index, account, amount] = value
+    // targetNode = tree.initialNodes[value]
+    // proof = tree.getProof(targetNode)
+    // claim = await claimFrom(distributor, index, account, ethers.BigNumber.from(`${amount}`), proof)
 
 }
 

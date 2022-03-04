@@ -6,7 +6,7 @@ Using:
 - `ganache-cli (Node.js)`
 - `hardhat (Node.js)`
 
-Same project for [Merkle tree](https://github.com/sikvelsigma/Merkle_Tree_Trans) but with hardhad
+Same project for [Merkle tree](https://github.com/sikvelsigma/Merkle_Tree_Trans) but with hardhat
 
 ## Deploy
 To deploy contracts on Rinkeby use `npx hardhat run scripts/deploy.js --network rinkeby`

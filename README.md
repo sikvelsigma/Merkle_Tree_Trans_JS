@@ -7,7 +7,8 @@ Using:
 Same project for [Merkle tree](https://github.com/sikvelsigma/Merkle_Tree_Trans) but with hardhat and fixed tree generation.
 
 ## Deploy
-To deploy contracts on Rinkeby use `npx hardhat run scripts/deploy.js --network rinkeby`. Note: one must specify the tree generation method and initial data hashing type for the task. For the test task to generate the tree with the same root as in the provided contract one must use `MerkleTree(data, 0, 1, ["uint256", "address", "uint256"])` as in `test-claims.js`. For the current version of the contract it will be impossible to claim rewards since `claim` function uses different type of initial data encoding than the `checkClaim` one.
+To deploy contracts on Rinkeby use `npx hardhat run scripts/deploy.js --network rinkeby`. 
+Note: one must specify the tree generation method and initial data hashing type for the task. For the test task to generate the tree with the same root as in the provided contract one must use `MerkleTree(data, 0, 1, ["uint256", "address", "uint256"])` as in `test-claims.js`. For the current version of the contract it will be impossible to claim rewards since `claim` function uses different type of initial data encoding than the `checkClaim` one.
 
 To test claims from existing contract one must specify distributor address in `DISTRIBUTOR_ADDRESS` (currently points to the contract from the task) variable and use `npx hardhat test --network rinkeby`
 

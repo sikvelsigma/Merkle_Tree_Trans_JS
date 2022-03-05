@@ -14,14 +14,14 @@ describe("Distributor test claims", async () => {
 
     let index, account, amount, targetNode, proof, claim, distributor
 
-    beforeEach(async () =>{
+    beforeEach(async () => {
         distributor = await ethers.getContractAt("SimpleRewardDistributor", DISTRIBUTOR_ADDRESS)
     })
 
     data.forEach((value) => {
         it('Should test if claim is valid', async () => {
             [index, account, amount] = value
-            targetNode = tree.initialNodes[data[index]]
+            targetNode = tree.initialNodes[value]
             proof = tree.getProof(targetNode)
             claim = await checkClaim(distributor, index, account, ethers.BigNumber.from(`${amount}`), proof);
             expect(claim).to.equal(true)

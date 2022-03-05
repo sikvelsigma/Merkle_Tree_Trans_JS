@@ -102,6 +102,7 @@ async function main() {
 
 }
 
+// this is here so the main() won't execute when importing functions from this module
 if (!module.parent) {
     main()
         .then(() => process.exit(0))

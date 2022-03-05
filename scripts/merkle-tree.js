@@ -22,18 +22,31 @@ class MerkleTree {
             0: promote to next layer
             1: pair with itself
             2: push at the start of the next layer
+        encodeType defines how initial data is encoded
+
     */
-    constructor(data, singleNodeMode = 0) {
+    constructor(data, singleNodeMode = 0, encodeType = 0, encodeArray = null) {
+        // check parameters 
+        if (encodeType && !encodeArray) {
+            throw new Error('encodeType is 1 but no encodeArray was specified')
+        }
+        if (singleNodeMode > 2) {
+            throw new Error('Incorrect singleNodeMode')
+        }
+
         // ease of access to hash function
         let web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
+        this.web3 = web3
         this.keccak = web3.utils.soliditySha3
 
+        this.encodeType = encodeType
+        this.encodeArray = encodeArray
         // initial values hashing
         let hashData = this.listToKeccak(data)
 
         // store initial nodes here with initial data as keys
         this.initialNodes = {}
-        
+
         // make initial nodes
         let nodes = []
         let hash, key
@@ -92,7 +105,7 @@ class MerkleTree {
                     hash = node1.value
                 }
                 currentId++
-                
+
                 // push a new node into next layer and assign it as a parent
                 // to left and right nodes
                 parents.push(new _Node(hash, currentId, left, right))
@@ -178,8 +191,18 @@ class MerkleTree {
     listToKeccak(inp) {
         // consverts an array of arrays with elements into an array of hashes
         let res = []
+        let encoded
         for (let i = 0; i < inp.length; i++) {
-            res.push(this.keccak(...inp[i]))
+            switch (this.encodeType) {
+                case 0:
+                    encoded = this.keccak(...inp[i])
+                    break
+                case 1:
+                    encoded = this.web3.eth.abi.encodeParameters(this.encodeArray, inp[i])
+                    encoded = this.keccak(encoded)
+                    break
+            }
+            res.push(encoded)
         }
         return res
     }
@@ -195,10 +218,10 @@ class MerkleTree {
 
 }
 
-// let data = readJsonData("rewardDistribution2")
-// let tree = new MerkleTree(data, 2)
+let data = readJsonData("rewardDistribution2")
+let tree = new MerkleTree(data, 0, 1, ["uint256", "address", "uint256"])
 
-// console.log(tree.merkleRoot)
+console.log(tree.merkleRoot)
 
 // // tree.printIdsByLayers()
 

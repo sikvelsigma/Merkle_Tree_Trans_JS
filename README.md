@@ -15,7 +15,7 @@ To test claims from existing contract one must specify distributor address in `D
 
 **One also needs to create a `.env` file from `.env.example` with appropriate keys.**
 ## Notes
-I've figured out what the problem was. The problem was initial data encoding. I assumed I should use `encodePacked` since it was used in the `claim` function of the contract, but `checkClaim` function uses `encode` which gives different result. So, in the end, I've managed to get both the original hash root and the new one. They both require initial data generation with `encode` and differ in the tree construction. The original hash can be obtained by pushing the odd node into the beginning on the next layer, the new one - by promoting an odd node onto the next layer.
+I've figured out what the problem was. The problem was initial data encoding. I assumed I should use `encodePacked` since it was used in the `claim` function of the contract, but `checkClaim` function used `encode` which gave different result. So, in the end, I've managed to get both the original hash root and the new one. They both require initial data generation with `encode` and differ in the tree construction. The original hash can be obtained by pushing the odd node into the beginning on the next layer, the new one - by promoting an odd node onto the next layer.
 
 To get the original hash of `0xac1910a665aeb8bd47d75573dfcfe10582a33738b3fe8b12eeba6a884aa86886` one must use `MerkleTree(data, 2, 1, ["uint256", "address", "uint256"])`
 

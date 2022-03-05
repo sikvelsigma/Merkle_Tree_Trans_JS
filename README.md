@@ -1,4 +1,4 @@
-# Merkle tree in Python for working with Solidity
+# Merkle tree in JS for working with Solidity
 
 Currently work-in-progress
 
